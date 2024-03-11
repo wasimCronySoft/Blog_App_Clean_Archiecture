@@ -1,4 +1,6 @@
-import 'package:clean_arch_application/features/homepage/presentation/pages/hompage_view.dart';
+import 'package:clean_arch_application/core/routes/routes.dart';
+import 'package:clean_arch_application/core/routes/routes_constants.dart';
+import 'package:clean_arch_application/features/auth/presentation/pages/login_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,11 +13,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: const HomepageView());
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      onGenerateRoute: RoutesGenerator.generateRoutes,
+      initialRoute: Routes.login,
+      home: const LoginView(),
+    );
   }
 }

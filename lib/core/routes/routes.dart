@@ -5,22 +5,25 @@ import 'package:clean_arch_application/features/homepage/presentation/pages/homp
 import 'package:flutter/material.dart';
 
 class RoutesGenerator {
-  static generateRoutes(RouteSettings settings) {
+  static Route<dynamic> generateRoutes(RouteSettings settings) {
     switch (settings.name) {
       case Routes.homepage:
-        MaterialPageRoute(
+        return MaterialPageRoute(
           builder: (context) => const HomepageView(),
         );
       case Routes.login:
-        MaterialPageRoute(
+        return MaterialPageRoute(
           builder: (context) => const LoginView(),
         );
       case Routes.singup:
-        MaterialPageRoute(
+        return MaterialPageRoute(
           builder: (context) => const SignupView(),
         );
 
       default:
+        return MaterialPageRoute(
+          builder: (context) => const SignupView(),
+        );
     }
   }
 }
