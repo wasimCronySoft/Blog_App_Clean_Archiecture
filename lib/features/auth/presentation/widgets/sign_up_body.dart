@@ -4,9 +4,6 @@ import 'package:clean_arch_application/core/widgets/textform_field.dart';
 import 'package:flutter/material.dart';
 
 class SignupBody extends StatefulWidget {
-  static route() => MaterialPageRoute(
-        builder: (context) => const SignupBody(),
-      );
   const SignupBody({super.key});
 
   @override

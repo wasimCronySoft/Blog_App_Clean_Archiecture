@@ -1,5 +1,6 @@
 import 'package:clean_arch_application/core/routes/routes.dart';
 import 'package:clean_arch_application/core/routes/routes_constants.dart';
+import 'package:clean_arch_application/core/theme/app_theme.dart';
 import 'package:clean_arch_application/features/auth/presentation/pages/login_view.dart';
 import 'package:flutter/material.dart';
 
@@ -14,10 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: AppTheme.ligthTheme,
       onGenerateRoute: RoutesGenerator.generateRoutes,
       initialRoute: Routes.login,
       home: const LoginView(),

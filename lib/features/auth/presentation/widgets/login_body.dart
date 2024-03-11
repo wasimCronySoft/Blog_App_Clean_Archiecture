@@ -1,3 +1,4 @@
+import 'package:clean_arch_application/core/routes/routes_constants.dart';
 import 'package:clean_arch_application/core/theme/app_pallete.dart';
 import 'package:clean_arch_application/core/widgets/gradient_button.dart';
 import 'package:clean_arch_application/core/widgets/textform_field.dart';
@@ -52,7 +53,9 @@ class _LoginBodyState extends State<LoginBody> {
               GradientButton(buttonText: "Login", onPressed: () {}),
               const SizedBox(height: 20),
               GestureDetector(
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, Routes.singup);
+                },
                 child: RichText(
                   text: TextSpan(
                     text: 'Don\'t have an account? ',
