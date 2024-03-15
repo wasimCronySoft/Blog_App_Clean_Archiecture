@@ -16,7 +16,7 @@ class SignUpInteractor implements AsyncUseCase<String, SignUpEntity> {
   @override
   Future<Either<Failure, String>> call(param) async {
     try {
-      final res = await repository.signupwithEmailPassword();
+      final res = await repository.signupwithEmailPassword(param);
       return Right(res);
     } on CustomException catch (e) {
       return Left(Failure(e.message));

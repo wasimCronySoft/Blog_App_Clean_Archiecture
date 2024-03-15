@@ -13,15 +13,13 @@ class AuthRepositoryImpl implements AuthRepository {
     required this.dataSource,
   });
   @override
-  Future<String> loginwithEmailPassword(
-      {required LoginEntity loginEntity}) async {
+  Future<String> loginwithEmailPassword(LoginEntity loginEntity) async {
     final res = await dataSource.loginWithEmail(loginEntity);
     return res;
   }
 
   @override
-  Future<String> signupwithEmailPassword(
-      {required SignUpEntity signupEntity}) async {
+  Future<String> signupwithEmailPassword(SignUpEntity signupEntity) async {
     final res = await dataSource.signupWithEmail(signupEntity);
     return res;
   }
