@@ -31,7 +31,9 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
       final res = await client.auth.signUp(
         email: signUpModel.email,
         password: signUpModel.password,
-        data: {'name': signUpModel.name},
+        data: {
+          'name': signUpModel.name,
+        },
       );
       if (res.user == null) throw CustomException(message: "User is null");
       return res.user!.id;
