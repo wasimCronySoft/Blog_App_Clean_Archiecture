@@ -41,6 +41,7 @@ dependencies:
   supabase: ^2.0.8
   hive: ^2.2.3
   dartz: ^0.10.1
+  supabase_flutter: ^2.3.4
 
 dev_dependencies:
   flutter_test:

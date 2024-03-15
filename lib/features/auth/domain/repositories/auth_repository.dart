@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 
 abstract interface class AuthRepository {
   Future<Either<Failure, String>> signupwithEmailPassword(
-      {SignupEntity signupEntity});
+      {SignUpEntity signupEntity});
 
   Future<Either<Failure, String>> loginwithEmailPassword(
       {LoginEntity loginEntity});
