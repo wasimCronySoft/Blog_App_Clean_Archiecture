@@ -1,7 +1,7 @@
-class LoginEntity {
+class LoginParam {
   String email;
   String password;
-  LoginEntity({
+  LoginParam({
     required this.email,
     required this.password,
   });

@@ -9,9 +9,9 @@ abstract class AuthEvent extends Equatable {
 }
 
 class AuthSignUp extends AuthEvent {
-  final SignUpEntity entity;
+  final SignupParam param;
   const AuthSignUp({
-    required this.entity,
+    required this.param,
   });
 }
 

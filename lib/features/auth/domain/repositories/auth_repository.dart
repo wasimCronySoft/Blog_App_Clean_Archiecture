@@ -1,8 +1,9 @@
-import 'package:clean_arch_application/features/auth/domain/entities/login_enity.dart';
-import 'package:clean_arch_application/features/auth/domain/entities/signup_entity.dart';
+import 'package:clean_arch_application/features/auth/data/models/user_model.dart';
+import 'package:clean_arch_application/features/auth/domain/entities/params/login_param.dart';
+import 'package:clean_arch_application/features/auth/domain/entities/params/signup_param.dart';
 
 abstract interface class AuthRepository {
-  Future<String> signupwithEmailPassword(SignUpEntity signupEntity);
+  Future<UserModel> signupwithEmailPassword(SignupParam param);
 
-  Future<String> loginwithEmailPassword(LoginEntity loginEntity);
+  Future<UserModel> loginwithEmailPassword(LoginParam param);
 }

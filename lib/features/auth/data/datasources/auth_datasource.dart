@@ -1,12 +1,13 @@
 import 'package:clean_arch_application/core/error/exception.dart';
+import 'package:clean_arch_application/features/auth/data/models/user_model.dart';
+
+import 'package:clean_arch_application/features/auth/domain/entities/params/login_param.dart';
+import 'package:clean_arch_application/features/auth/domain/entities/params/signup_param.dart';
 import 'package:supabase/supabase.dart';
 
-import 'package:clean_arch_application/features/auth/data/models/login_model.dart';
-import 'package:clean_arch_application/features/auth/data/models/signup_model.dart';
-
 abstract interface class AuthRemoteDataSource {
-  Future<String> signupWithEmail(SignUpModel signUpModel);
-  Future<String> loginWithEmail(LoginModel loginModel);
+  Future<UserModel> signupWithEmail(SignupParam param);
+  Future<UserModel> loginWithEmail(LoginParam param);
 }
 
 class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
@@ -15,28 +16,28 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
     required this.client,
   });
   @override
-  Future<String> loginWithEmail(LoginModel loginModel) async {
+  Future<UserModel> loginWithEmail(LoginParam param) async {
     try {
-      final res = await client.auth.signInWithPassword(
-          email: loginModel.email, password: loginModel.password);
-      return res.user!.id;
+      final res = await client.auth
+          .signInWithPassword(email: param.email, password: param.password);
+      return UserModel.fromJson(res.user!.toJson());
     } catch (e) {
       rethrow;
     }
   }
 
   @override
-  Future<String> signupWithEmail(SignUpModel signUpModel) async {
+  Future<UserModel> signupWithEmail(SignupParam param) async {
     try {
       final res = await client.auth.signUp(
-        email: signUpModel.email,
-        password: signUpModel.password,
+        email: param.email,
+        password: param.password,
         data: {
-          'name': signUpModel.name,
+          'name': param.name,
         },
       );
       if (res.user == null) throw CustomException(message: "User is null");
-      return res.user!.id;
+      return UserModel.fromJson(res.user!.toJson());
     } catch (e) {
       throw CustomException(message: e.toString());
     }

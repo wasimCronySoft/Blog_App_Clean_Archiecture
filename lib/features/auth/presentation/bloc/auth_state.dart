@@ -13,9 +13,9 @@ class AuthInitial extends AuthState {}
 class AuthLoading extends AuthState {}
 
 class AuthSuccess extends AuthState {
-  final String uid;
+  final User user;
   const AuthSuccess({
-    required this.uid,
+    required this.user,
   });
 }
 

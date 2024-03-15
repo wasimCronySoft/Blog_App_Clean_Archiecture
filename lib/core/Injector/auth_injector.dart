@@ -1,4 +1,4 @@
-import 'package:clean_arch_application/core/DI/injector.dart';
+import 'package:clean_arch_application/core/Injector/injector.dart';
 import 'package:clean_arch_application/core/constants/api_key.dart';
 import 'package:clean_arch_application/features/auth/data/datasources/auth_datasource.dart';
 import 'package:clean_arch_application/features/auth/data/repositories/auth_repository_impl.dart';
