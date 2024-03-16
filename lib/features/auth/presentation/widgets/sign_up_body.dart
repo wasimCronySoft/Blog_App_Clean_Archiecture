@@ -41,6 +41,7 @@ class _SignupBodyState extends State<SignupBody> {
           }
           if (state is AuthFailure) {
             CustomSnackBar.showErrorSnackBar(context, state.message);
+            debugPrint(state.message);
           }
         },
         child: Padding(

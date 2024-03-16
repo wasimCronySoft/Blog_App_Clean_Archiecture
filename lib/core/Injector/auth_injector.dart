@@ -5,12 +5,19 @@ import 'package:clean_arch_application/features/auth/data/repositories/auth_repo
 import 'package:clean_arch_application/features/auth/domain/repositories/auth_repository.dart';
 import 'package:clean_arch_application/features/auth/domain/usecases/signup_interactor.dart';
 import 'package:clean_arch_application/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:supabase/supabase.dart';
+import 'package:flutter/foundation.dart';
+
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 class AuthInjector {
-  static init() {
-    DI.instance.registerLazySingleton<SupabaseClient>(
-        () => SupabaseClient(ApiKey.urlKey, ApiKey.apiKey));
+  static init() async {
+    final supabase = await Supabase.initialize(
+      url: ApiKey.urlKey,
+      anonKey: ApiKey.apiKey,
+      debug: kDebugMode,
+      storageOptions: const StorageClientOptions(),
+    );
+    DI.instance.registerLazySingleton<SupabaseClient>(() => supabase.client);
     DI.instance.registerLazySingleton<AuthRemoteDataSource>(
         () => AuthRemoteDataSourceImp(client: DI.instance<SupabaseClient>()));
     DI.instance.registerLazySingleton<AuthRepository>(() =>
