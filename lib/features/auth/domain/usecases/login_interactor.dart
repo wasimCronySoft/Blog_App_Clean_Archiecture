@@ -5,7 +5,7 @@ import 'package:dartz/dartz.dart';
 import 'package:clean_arch_application/core/error/failure.dart';
 import 'package:clean_arch_application/core/usecases/async_usecase.dart';
 import 'package:clean_arch_application/features/auth/domain/entities/params/login_param.dart';
-import 'package:clean_arch_application/features/auth/domain/entities/user.dart';
+import 'package:clean_arch_application/core/entities/user.dart';
 import 'package:clean_arch_application/features/auth/domain/repositories/auth_repository.dart';
 
 class LoginInteractor implements AsyncUseCase<User, LoginParam> {

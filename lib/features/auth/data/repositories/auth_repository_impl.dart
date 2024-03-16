@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:clean_arch_application/features/auth/data/datasources/auth_datasource.dart';
-import 'package:clean_arch_application/features/auth/data/models/user_model.dart';
 import 'package:clean_arch_application/features/auth/domain/entities/params/login_param.dart';
 import 'package:clean_arch_application/features/auth/domain/entities/params/signup_param.dart';
+import 'package:clean_arch_application/core/entities/user.dart';
 
 import 'package:clean_arch_application/features/auth/domain/repositories/auth_repository.dart';
 
@@ -13,19 +13,19 @@ class AuthRepositoryImpl implements AuthRepository {
     required this.dataSource,
   });
   @override
-  Future<UserModel> loginwithEmailPassword(LoginParam param) async {
+  Future<User> loginwithEmailPassword(LoginParam param) async {
     final res = await dataSource.loginWithEmail(param);
     return res;
   }
 
   @override
-  Future<UserModel> signupwithEmailPassword(SignupParam param) async {
+  Future<User> signupwithEmailPassword(SignupParam param) async {
     final res = await dataSource.signupWithEmail(param);
     return res;
   }
 
   @override
-  Future<UserModel?> getCurrentUserData() async {
+  Future<User?> getCurrentUserData() async {
     final res = await dataSource.getCurrentUserData();
     return res;
   }

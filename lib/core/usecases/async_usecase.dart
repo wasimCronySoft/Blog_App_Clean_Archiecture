@@ -4,3 +4,5 @@ import 'package:dartz/dartz.dart';
 abstract interface class AsyncUseCase<SuccessType, Param> {
   Future<Either<Failure, SuccessType>> call(Param param);
 }
+
+class NoParams {}

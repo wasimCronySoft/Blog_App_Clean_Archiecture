@@ -54,7 +54,9 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
             'id',
             currentUserSession?.user.id ?? "",
           );
-      return UserModel.fromJson(res.first);
+      return UserModel.fromJson(res.first).copyWith(
+        email: currentUserSession?.user.email ?? "",
+      );
     } else {
       return null;
     }

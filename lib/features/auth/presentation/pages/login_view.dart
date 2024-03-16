@@ -17,6 +17,8 @@ class LoginView extends StatelessWidget {
           create: (context) => AuthBloc(
             singupInteractor: DI.instance<SignUpInteractor>(),
             loginInteractor: DI.instance<LoginInteractor>(),
+            userInteractor: DI.instance(),
+            appUserCubit: DI.instance(),
           ),
         )
       ],
