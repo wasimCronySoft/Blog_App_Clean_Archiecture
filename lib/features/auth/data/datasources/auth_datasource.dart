@@ -7,6 +7,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 abstract interface class AuthRemoteDataSource {
   Future<UserModel> signupWithEmail(SignupParam param);
   Future<UserModel> loginWithEmail(LoginParam param);
+  Session? get currentUserSession;
 }
 
 class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
@@ -41,4 +42,7 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
       throw CustomException(message: e.toString());
     }
   }
+
+  @override
+  Session? get currentUserSession => client.auth.currentSession;
 }

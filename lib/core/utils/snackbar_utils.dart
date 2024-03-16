@@ -8,7 +8,7 @@ class CustomSnackBar {
       ..showSnackBar(
         SnackBar(
           content: Text(message),
-          backgroundColor: AppPallete.gradient3,
+          backgroundColor: AppPallete.successColor,
         ),
       );
   }

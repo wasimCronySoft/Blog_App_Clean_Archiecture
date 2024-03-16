@@ -38,10 +38,13 @@ class _SignupBodyState extends State<SignupBody> {
         listener: (context, state) {
           if (state is AuthLoading) {
             showLoadingIndicator(context);
+          } else {
+            Navigator.of(context).pop();
           }
           if (state is AuthSuccess) {
-            CustomSnackBar.showSuccessSnackBar(
-                context, "Account created successfully");
+            CustomSnackBar.showSuccessSnackBar(context,
+                "Account created successfully. Verfication email sent to provide email");
+            Navigator.of(context).pop();
           }
           if (state is AuthFailure) {
             CustomSnackBar.showErrorSnackBar(context, state.message);

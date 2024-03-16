@@ -5,6 +5,11 @@ class HomepageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Blog App"),
+      ),
+      body: const Column(),
+    );
   }
 }

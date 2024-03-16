@@ -41,6 +41,8 @@ class _LoginBodyState extends State<LoginBody> {
           if (state is AuthSuccess) {
             CustomSnackBar.showSuccessSnackBar(
                 context, "Account Logged in successfully");
+            Navigator.pushNamedAndRemoveUntil(
+                context, Routes.homepage, (route) => false);
           }
           if (state is AuthFailure) {
             CustomSnackBar.showErrorSnackBar(context, state.message);
