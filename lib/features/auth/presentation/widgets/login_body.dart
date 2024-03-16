@@ -35,6 +35,8 @@ class _LoginBodyState extends State<LoginBody> {
         listener: (context, state) {
           if (state is AuthLoading) {
             showLoadingIndicator(context);
+          } else {
+            Navigator.of(context).pop();
           }
           if (state is AuthSuccess) {
             CustomSnackBar.showSuccessSnackBar(

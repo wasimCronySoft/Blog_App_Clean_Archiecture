@@ -1,4 +1,6 @@
 import 'package:clean_arch_application/core/Injector/injector.dart';
+import 'package:clean_arch_application/features/auth/domain/usecases/login_interactor.dart';
+import 'package:clean_arch_application/features/auth/domain/usecases/signup_interactor.dart';
 import 'package:clean_arch_application/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:clean_arch_application/features/auth/presentation/widgets/login_body.dart';
 import 'package:flutter/material.dart';
@@ -13,8 +15,8 @@ class LoginView extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => AuthBloc(
-            singupInteractor: DI.instance(),
-            loginInteractor: DI.instance(),
+            singupInteractor: DI.instance<SignUpInteractor>(),
+            loginInteractor: DI.instance<LoginInteractor>(),
           ),
         )
       ],

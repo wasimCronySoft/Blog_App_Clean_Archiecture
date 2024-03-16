@@ -16,8 +16,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({required this.singupInteractor, required this.loginInteractor})
       : super(AuthInitial()) {
     //Signup
+
     on<AuthSignUp>((event, emit) async {
-      AuthLoading();
+      emit(const AuthLoading());
       final res = await singupInteractor(event.param);
       res.fold(
         (l) => emit(AuthFailure(message: l.message)),
@@ -31,7 +32,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     //Login
     on<AuthLogin>((event, emit) async {
-      AuthLoading();
+      emit(const AuthLoading());
       final res = await loginInteractor(event.param);
       res.fold(
         (l) => emit(AuthFailure(message: l.message)),

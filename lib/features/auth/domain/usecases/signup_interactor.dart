@@ -3,14 +3,12 @@ import 'package:clean_arch_application/core/error/exception.dart';
 import 'package:clean_arch_application/features/auth/domain/entities/params/signup_param.dart';
 import 'package:clean_arch_application/features/auth/domain/entities/user.dart';
 import 'package:dartz/dartz.dart';
-
 import 'package:clean_arch_application/core/error/failure.dart';
 import 'package:clean_arch_application/core/usecases/async_usecase.dart';
-
 import 'package:clean_arch_application/features/auth/domain/repositories/auth_repository.dart';
 
 class SignUpInteractor implements AsyncUseCase<User, SignupParam> {
-  AuthRepository repository;
+  final AuthRepository repository;
   SignUpInteractor({
     required this.repository,
   });
