@@ -8,6 +8,7 @@ abstract interface class AuthRemoteDataSource {
   Future<UserModel> signupWithEmail(SignupParam param);
   Future<UserModel> loginWithEmail(LoginParam param);
   Session? get currentUserSession;
+  Future<UserModel?> getCurrentUserData();
 }
 
 class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
@@ -45,4 +46,17 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
 
   @override
   Session? get currentUserSession => client.auth.currentSession;
+
+  @override
+  Future<UserModel?> getCurrentUserData() async {
+    if (currentUserSession != null) {
+      final res = await client.from("profiles").select().eq(
+            'id',
+            currentUserSession?.user.id ?? "",
+          );
+      return UserModel.fromJson(res.first);
+    } else {
+      return null;
+    }
+  }
 }

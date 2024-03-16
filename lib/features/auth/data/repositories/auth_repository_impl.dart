@@ -23,4 +23,10 @@ class AuthRepositoryImpl implements AuthRepository {
     final res = await dataSource.signupWithEmail(param);
     return res;
   }
+
+  @override
+  Future<UserModel?> getCurrentUserData() async {
+    final res = await dataSource.getCurrentUserData();
+    return res;
+  }
 }

@@ -6,4 +6,6 @@ abstract interface class AuthRepository {
   Future<UserModel> signupwithEmailPassword(SignupParam param);
 
   Future<UserModel> loginwithEmailPassword(LoginParam param);
+
+  Future<UserModel?> getCurrentUserData();
 }
