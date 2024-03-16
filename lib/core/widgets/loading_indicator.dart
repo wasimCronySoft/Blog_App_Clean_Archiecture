@@ -5,6 +5,7 @@ showLoadingIndicator(BuildContext context) {
       context: context,
       builder: (context) {
         return const AlertDialog.adaptive(
+          title: Text("Loading"),
           content: CircularProgressIndicator.adaptive(),
         );
       });

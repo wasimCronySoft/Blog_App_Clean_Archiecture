@@ -13,7 +13,8 @@ class SignupView extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => AuthBloc(
-            interactor: DI.instance(),
+            singupInteractor: DI.instance(),
+            loginInteractor: DI.instance(),
           ),
         )
       ],

@@ -1,6 +1,7 @@
 import 'package:clean_arch_application/core/theme/app_pallete.dart';
 import 'package:clean_arch_application/core/utils/snackbar_utils.dart';
 import 'package:clean_arch_application/core/widgets/gradient_button.dart';
+import 'package:clean_arch_application/core/widgets/loading_indicator.dart';
 import 'package:clean_arch_application/core/widgets/textform_field.dart';
 import 'package:clean_arch_application/features/auth/domain/entities/params/signup_param.dart';
 
@@ -35,6 +36,9 @@ class _SignupBodyState extends State<SignupBody> {
       appBar: AppBar(),
       body: BlocListener<AuthBloc, AuthState>(
         listener: (context, state) {
+          if (state is AuthLoading) {
+            showLoadingIndicator(context);
+          }
           if (state is AuthSuccess) {
             CustomSnackBar.showSuccessSnackBar(
                 context, "Account created successfully");

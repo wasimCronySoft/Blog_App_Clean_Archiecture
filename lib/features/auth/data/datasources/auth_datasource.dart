@@ -1,9 +1,8 @@
 import 'package:clean_arch_application/core/error/exception.dart';
 import 'package:clean_arch_application/features/auth/data/models/user_model.dart';
-
 import 'package:clean_arch_application/features/auth/domain/entities/params/login_param.dart';
 import 'package:clean_arch_application/features/auth/domain/entities/params/signup_param.dart';
-import 'package:supabase/supabase.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract interface class AuthRemoteDataSource {
   Future<UserModel> signupWithEmail(SignupParam param);
@@ -22,7 +21,7 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
           .signInWithPassword(email: param.email, password: param.password);
       return UserModel.fromJson(res.user!.toJson());
     } catch (e) {
-      rethrow;
+      throw CustomException(message: e.toString());
     }
   }
 

@@ -15,6 +15,11 @@ class AuthSignUp extends AuthEvent {
   });
 }
 
-class AuthLogin extends AuthEvent {}
+class AuthLogin extends AuthEvent {
+  final LoginParam param;
+  const AuthLogin({
+    required this.param,
+  });
+}
 
 class AuthLogout extends AuthEvent {}
