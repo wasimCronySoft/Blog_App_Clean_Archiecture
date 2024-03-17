@@ -82,7 +82,7 @@ class _SignupBodyState extends State<SignupBody> {
                   isObscureText: true,
                 ),
                 const SizedBox(height: 20),
-                GradientButton(
+                CustomButton(
                   buttonText: 'Sign Up',
                   onPressed: () {
                     if (formKey.currentState!.validate()) {

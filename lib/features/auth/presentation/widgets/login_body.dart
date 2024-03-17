@@ -73,7 +73,7 @@ class _LoginBodyState extends State<LoginBody> {
                   isObscureText: true,
                 ),
                 const SizedBox(height: 20),
-                GradientButton(
+                CustomButton(
                   buttonText: "Login",
                   onPressed: () {
                     context.read<AuthBloc>().add(
