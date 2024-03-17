@@ -4,13 +4,13 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:clean_arch_application/features/homepage/domain/entities/blog.dart';
-import 'package:clean_arch_application/features/homepage/domain/usecases/blog_interactor.dart';
+import 'package:clean_arch_application/features/homepage/domain/usecases/upload_blog_interactor.dart';
 
 part 'blog_state.dart';
 
-class BlogCubit extends Cubit<BlogState> {
-  final BlogInteractor interactor;
-  BlogCubit({
+class UploadBlogCubit extends Cubit<BlogState> {
+  final UploadBlogInteractor interactor;
+  UploadBlogCubit({
     required this.interactor,
   }) : super(BlogInitial());
 

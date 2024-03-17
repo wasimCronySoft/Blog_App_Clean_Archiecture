@@ -7,7 +7,7 @@ import 'package:clean_arch_application/core/utils/image_picker.dart';
 import 'package:clean_arch_application/core/utils/snackbar_utils.dart';
 import 'package:clean_arch_application/core/widgets/loading_indicator.dart';
 import 'package:clean_arch_application/features/homepage/domain/entities/blog_params.dart';
-import 'package:clean_arch_application/features/homepage/presentation/cubit/blog_cubit.dart';
+import 'package:clean_arch_application/features/homepage/presentation/cubit/upload_blog_cubit.dart';
 import 'package:clean_arch_application/features/homepage/presentation/widgets/blog_text_field.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +44,7 @@ class _AddNewBlogBodyState extends State<AddNewBlogBody> {
         image != null) {
       final uid =
           (context.read<AppUserCubit>().state as AppUserLoggedIn).user.uid;
-      context.read<BlogCubit>().uploadBlog(
+      context.read<UploadBlogCubit>().uploadBlog(
             BlogParams(
               id: const Uuid().v1(),
               uid: uid,
@@ -79,7 +79,7 @@ class _AddNewBlogBodyState extends State<AddNewBlogBody> {
           ),
         ],
       ),
-      body: BlocListener<BlogCubit, BlogState>(
+      body: BlocListener<UploadBlogCubit, BlogState>(
         listener: (context, state) {
           if (state is BlogLoading) {
             showLoadingIndicator(context);

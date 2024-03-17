@@ -9,9 +9,9 @@ import 'package:clean_arch_application/core/usecases/async_usecase.dart';
 import 'package:clean_arch_application/features/homepage/domain/entities/blog_params.dart';
 import 'package:clean_arch_application/features/homepage/domain/repositories/blog_repository.dart';
 
-class BlogInteractor implements AsyncUseCase<void, BlogParams> {
+class UploadBlogInteractor implements AsyncUseCase<void, BlogParams> {
   final BlogRepository repository;
-  BlogInteractor({
+  UploadBlogInteractor({
     required this.repository,
   });
   @override

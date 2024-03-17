@@ -7,7 +7,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 abstract interface class BlogRemoteDatatSource {
   Future<void> uploadBlog({required BlogParams params});
-  Future<List<BlogModel>> retriveBlog({required BlogParams params});
+  Future<List<BlogModel>> retriveBlog();
   Future<String> uploadBlogImage(
       {required File file, required BlogParams params});
 }
@@ -18,7 +18,7 @@ class BlogRemoteDataSourceImpl implements BlogRemoteDatatSource {
     required this.client,
   });
   @override
-  Future<List<BlogModel>> retriveBlog({required BlogParams params}) async {
+  Future<List<BlogModel>> retriveBlog() async {
     final res = await client.from("blogs").select('*,profiles(name)');
     return List.from(res).map((e) => BlogModel.fromJson(e)).toList();
   }

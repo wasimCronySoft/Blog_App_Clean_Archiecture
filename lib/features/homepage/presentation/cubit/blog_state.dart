@@ -1,4 +1,4 @@
-part of 'blog_cubit.dart';
+part of 'upload_blog_cubit.dart';
 
 sealed class BlogState extends Equatable {
   const BlogState();
@@ -12,7 +12,7 @@ final class BlogInitial extends BlogState {}
 final class BlogLoading extends BlogState {}
 
 final class BlogSuccess extends BlogState {
-  final Blog? blog;
+  final List<Blog>? blog;
   const BlogSuccess({this.blog});
 }
 
