@@ -15,4 +15,6 @@ class AppUserLoggedIn extends AppUserState {
   const AppUserLoggedIn({
     required this.user,
   });
+  @override
+  List<Object> get props => [user];
 }

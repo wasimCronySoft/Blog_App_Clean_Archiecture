@@ -21,7 +21,9 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
     try {
       final res = await client.auth
           .signInWithPassword(email: param.email, password: param.password);
-      return UserModel.fromJson(res.user!.toJson());
+      return UserModel.fromJson(res.user!.toJson()).copyWith(
+        email: currentUserSession?.user.email ?? "",
+      );
     } catch (e) {
       throw CustomException(message: e.toString());
     }
@@ -38,7 +40,9 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
         },
       );
       if (res.user == null) throw CustomException(message: "User is null");
-      return UserModel.fromJson(res.user!.toJson());
+      return UserModel.fromJson(res.user!.toJson()).copyWith(
+        email: currentUserSession?.user.email ?? "",
+      );
     } catch (e) {
       throw CustomException(message: e.toString());
     }

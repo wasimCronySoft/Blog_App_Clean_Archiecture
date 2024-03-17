@@ -8,10 +8,10 @@ class AppUserCubit extends Cubit<AppUserState> {
   AppUserCubit() : super(AppUserInitial());
 
   void appUser(User? user) {
-    if (user != null) {
-      emit(AppUserLoggedIn(user: user));
-    } else {
+    if (user == null) {
       emit(AppUserInitial());
+    } else {
+      emit(AppUserLoggedIn(user: user));
     }
   }
 }
