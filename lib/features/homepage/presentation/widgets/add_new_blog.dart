@@ -80,7 +80,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
               children: [
                 image != null
                     ? GestureDetector(
-                        // onTap: selectImage,
+                        onTap: selectImage,
                         child: SizedBox(
                           width: double.infinity,
                           height: 150,
@@ -95,7 +95,7 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
                       )
                     : GestureDetector(
                         onTap: () {
-                          // selectImage();
+                          selectImage();
                         },
                         child: DottedBorder(
                           color: AppPallete.borderColor,
