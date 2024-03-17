@@ -3,6 +3,7 @@ import 'package:clean_arch_application/core/widgets/loading_indicator.dart';
 import 'package:clean_arch_application/features/homepage/presentation/cubit/fetch_blog_cubit.dart';
 import 'package:clean_arch_application/features/homepage/presentation/cubit/upload_blog_cubit.dart';
 import 'package:clean_arch_application/features/homepage/presentation/widgets/blog_card.dart';
+import 'package:clean_arch_application/features/homepage/presentation/widgets/empty_container.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -51,7 +52,11 @@ class _HomepageBodyState extends State<HomepageBody> {
                   itemCount: state.blog!.length,
                   itemBuilder: (context, index) {
                     final blog = state.blog![index];
-                    return BlogCard(blog: blog, color: Colors.grey.shade300);
+                    return BlogCard(
+                      blog: blog,
+                      color: Colors.grey.shade300,
+                      tag: blog.id,
+                    );
                   },
                 );
               }
@@ -59,9 +64,7 @@ class _HomepageBodyState extends State<HomepageBody> {
                 child: Text("Add new Content"),
               );
             } else {
-              return const Center(
-                child: Text("Add new Content"),
-              );
+              return const EmptyContainer();
             }
           },
         ),

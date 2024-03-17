@@ -6,10 +6,12 @@ import 'package:flutter/material.dart';
 class BlogCard extends StatelessWidget {
   final Blog blog;
   final Color color;
+  final String tag;
   const BlogCard({
     super.key,
     required this.blog,
     required this.color,
+    required this.tag,
   });
 
   @override
@@ -66,12 +68,15 @@ class BlogCard extends StatelessWidget {
                 Text('${calculateReadingTime(blog.content)} min'),
               ],
             ),
-            Container(
-              width: MediaQuery.of(context).size.width * 0.4,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                image: DecorationImage(
-                  image: NetworkImage(blog.imageUrl),
+            Hero(
+              tag: tag,
+              child: Container(
+                width: MediaQuery.of(context).size.width * 0.4,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  image: DecorationImage(
+                    image: NetworkImage(blog.imageUrl),
+                  ),
                 ),
               ),
             )

@@ -8,6 +8,7 @@ class Blog {
   final String imageUrl;
   final DateTime currentDateTime;
   final String? name;
+
   Blog({
     required this.id,
     required this.uid,

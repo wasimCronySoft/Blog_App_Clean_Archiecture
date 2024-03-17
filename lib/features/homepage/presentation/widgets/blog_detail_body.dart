@@ -2,6 +2,7 @@ import 'package:clean_arch_application/core/theme/app_pallete.dart';
 import 'package:clean_arch_application/core/utils/calculate_reading_time.dart';
 import 'package:clean_arch_application/core/utils/date_format.dart';
 import 'package:clean_arch_application/features/homepage/domain/entities/blog.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BlogDetailBody extends StatelessWidget {
@@ -49,9 +50,12 @@ class BlogDetailBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.network(blog.imageUrl),
+                Hero(
+                  tag: blog.id,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(blog.imageUrl),
+                  ),
                 ),
                 const SizedBox(height: 20),
                 Text(
