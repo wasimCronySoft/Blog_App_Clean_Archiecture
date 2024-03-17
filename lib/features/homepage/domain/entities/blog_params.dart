@@ -1,4 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:io';
+
 class BlogParams {
   final String id;
   final String uid;
@@ -7,6 +9,7 @@ class BlogParams {
   final List<String> topics;
   final String imageUrl;
   final DateTime currentDateTime;
+  final File? file;
   BlogParams({
     required this.id,
     required this.uid,
@@ -15,6 +18,7 @@ class BlogParams {
     required this.topics,
     required this.imageUrl,
     required this.currentDateTime,
+    this.file,
   });
 
   Map<String, dynamic> toJson() {
