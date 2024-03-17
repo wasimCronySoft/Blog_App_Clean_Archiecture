@@ -90,7 +90,10 @@ class _AddNewBlogBodyState extends State<AddNewBlogBody> {
           if (state is BlogSuccess) {
             CustomSnackBar.showSuccessSnackBar(
                 context, "Blog uploaded successfully");
-            Navigator.of(context).pushReplacementNamed(Routes.homepage);
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              Routes.homepage,
+              (routes) => false,
+            );
           }
           if (state is BlogFailure) {
             CustomSnackBar.showErrorSnackBar(context, state.message);
