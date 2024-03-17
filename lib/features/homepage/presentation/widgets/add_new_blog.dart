@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:clean_arch_application/core/constants/app_string.dart';
 import 'package:clean_arch_application/core/cubits/app_user/app_user_cubit.dart';
 import 'package:clean_arch_application/core/theme/app_pallete.dart';
+import 'package:clean_arch_application/core/utils/image_picker.dart';
 import 'package:clean_arch_application/features/homepage/presentation/widgets/blog_text_field.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/material.dart';
@@ -23,14 +24,14 @@ class _AddNewBlogPageState extends State<AddNewBlogPage> {
   List<String> selectedTopics = [];
   File? image;
 
-  // void selectImage() async {
-  //   final pickedImage = await pickImage();
-  //   if (pickedImage != null) {
-  //     setState(() {
-  //       image = pickedImage;
-  //     });
-  //   }
-  // }
+  void selectImage() async {
+    final pickedImage = await pickImage();
+    if (pickedImage != null) {
+      setState(() {
+        image = pickedImage;
+      });
+    }
+  }
 
   void uploadBlog() {
     if (formKey.currentState!.validate() &&
