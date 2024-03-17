@@ -10,9 +10,9 @@ part 'blog_state.dart';
 
 class BlogCubit extends Cubit<BlogState> {
   final BlogInteractor interactor;
-  BlogCubit(
-    this.interactor,
-  ) : super(BlogInitial());
+  BlogCubit({
+    required this.interactor,
+  }) : super(BlogInitial());
 
   void uploadBlog(BlogParams params) async {
     emit(BlogLoading());
