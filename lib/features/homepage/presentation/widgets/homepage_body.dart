@@ -1,5 +1,5 @@
 import 'package:clean_arch_application/core/routes/routes_constants.dart';
-import 'package:clean_arch_application/core/theme/app_pallete.dart';
+import 'package:clean_arch_application/core/widgets/loading_indicator.dart';
 import 'package:clean_arch_application/features/homepage/presentation/cubit/fetch_blog_cubit.dart';
 import 'package:clean_arch_application/features/homepage/presentation/cubit/upload_blog_cubit.dart';
 import 'package:clean_arch_application/features/homepage/presentation/widgets/blog_card.dart';
@@ -37,27 +37,34 @@ class _HomepageBodyState extends State<HomepageBody> {
           )
         ],
       ),
-      body: BlocBuilder<FetchBlogsCubit, BlogState>(
-        builder: (context, state) {
-          if (state is BlogSuccess) {
-            if (state.blog != null) {
-              return ListView.builder(
-                itemCount: state.blog!.length,
-                itemBuilder: (context, index) {
-                  final blog = state.blog![index];
-                  return BlogCard(blog: blog, color: Colors.grey.shade300);
-                },
-              );
-            }
-            return const Center(
-              child: Text("Add new Content"),
-            );
-          } else {
-            return const Center(
-              child: Text("Add new Content"),
-            );
+      body: BlocListener<FetchBlogsCubit, BlogState>(
+        listener: (context, state) {
+          if (state is BlogLoading) {
+            showLoadingIndicator(context);
           }
         },
+        child: BlocBuilder<FetchBlogsCubit, BlogState>(
+          builder: (context, state) {
+            if (state is BlogSuccess) {
+              if (state.blog!.isNotEmpty) {
+                return ListView.builder(
+                  itemCount: state.blog!.length,
+                  itemBuilder: (context, index) {
+                    final blog = state.blog![index];
+                    return BlogCard(blog: blog, color: Colors.grey.shade300);
+                  },
+                );
+              }
+              return const Center(
+                child: Text("Add new Content"),
+              );
+            } else {
+              return const Center(
+                child: Text("Add new Content"),
+              );
+            }
+          },
+        ),
       ),
     );
   }

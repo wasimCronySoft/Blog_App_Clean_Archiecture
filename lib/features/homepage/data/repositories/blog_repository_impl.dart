@@ -25,7 +25,7 @@ class BlogRepositoryImpl implements BlogRepository {
 
   @override
   Future<List<Blog>> fetchBlogs() async {
-    final res = await dataSource.retriveBlog();
+    final res = await dataSource.fetchBlog();
     return res;
   }
 }

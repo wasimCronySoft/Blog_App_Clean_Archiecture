@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:clean_arch_application/core/constants/app_string.dart';
 import 'package:clean_arch_application/core/cubits/app_user/app_user_cubit.dart';
+import 'package:clean_arch_application/core/routes/routes_constants.dart';
 import 'package:clean_arch_application/core/theme/app_pallete.dart';
 import 'package:clean_arch_application/core/utils/image_picker.dart';
 import 'package:clean_arch_application/core/utils/snackbar_utils.dart';
@@ -89,7 +90,7 @@ class _AddNewBlogBodyState extends State<AddNewBlogBody> {
           if (state is BlogSuccess) {
             CustomSnackBar.showSuccessSnackBar(
                 context, "Blog uploaded successfully");
-            Navigator.of(context).pop();
+            Navigator.of(context).pushReplacementNamed(Routes.homepage);
           }
           if (state is BlogFailure) {
             CustomSnackBar.showErrorSnackBar(context, state.message);
