@@ -58,7 +58,7 @@ class AuthInjector {
       ),
     );
 
-    DI.instance.registerFactory<AppUserCubit>(
+    DI.instance.registerLazySingleton<AppUserCubit>(
       () => AppUserCubit(),
     );
 

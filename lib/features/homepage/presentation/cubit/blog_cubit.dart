@@ -19,8 +19,8 @@ class BlogCubit extends Cubit<BlogState> {
     final res = await interactor(params);
     res.fold(
       (l) => emit(BlogFailure(message: l.message)),
-      (r) => emit(
-        BlogSuccess(blog: r),
+      (_) => emit(
+        const BlogSuccess(),
       ),
     );
   }

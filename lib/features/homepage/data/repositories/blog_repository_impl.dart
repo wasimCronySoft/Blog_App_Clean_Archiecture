@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:io';
 
 import 'package:clean_arch_application/features/homepage/data/datasources/blog_remote_data_source.dart';
@@ -7,12 +6,12 @@ import 'package:clean_arch_application/features/homepage/domain/entities/blog_pa
 import 'package:clean_arch_application/features/homepage/domain/repositories/blog_repository.dart';
 
 class BlogRepositoryImpl implements BlogRepository {
-  final BlogRemoteDataSourceImpl dataSource;
+  final BlogRemoteDatatSource dataSource;
   BlogRepositoryImpl({
     required this.dataSource,
   });
   @override
-  Future<Blog> uploadBlog(
+  Future<void> uploadBlog(
       {required BlogParams params, required File file}) async {
     final imageString =
         await dataSource.uploadBlogImage(file: file, params: params);

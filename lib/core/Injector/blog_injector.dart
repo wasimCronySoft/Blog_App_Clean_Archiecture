@@ -15,7 +15,7 @@ class BlogInjector {
     );
     DI.instance.registerLazySingleton<BlogRepository>(
       () => BlogRepositoryImpl(
-        dataSource: DI.instance<BlogRemoteDataSourceImpl>(),
+        dataSource: DI.instance<BlogRemoteDatatSource>(),
       ),
     );
     DI.instance.registerLazySingleton<BlogInteractor>(

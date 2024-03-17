@@ -3,8 +3,6 @@ import 'package:clean_arch_application/core/cubits/app_user/app_user_cubit.dart'
 
 import 'package:clean_arch_application/core/routes/routes.dart';
 import 'package:clean_arch_application/core/theme/app_theme.dart';
-import 'package:clean_arch_application/features/auth/domain/usecases/login_interactor.dart';
-import 'package:clean_arch_application/features/auth/domain/usecases/signup_interactor.dart';
 import 'package:clean_arch_application/features/auth/presentation/bloc/auth_bloc.dart';
 
 import 'package:clean_arch_application/wrapper.dart';
@@ -32,18 +30,17 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => DI.instance<AuthBloc>(),
-        ),
-        BlocProvider(
+        BlocProvider<AppUserCubit>(
           create: (context) => DI.instance<AppUserCubit>(),
+        ),
+        BlocProvider<AuthBloc>(
+          create: (context) => DI.instance<AuthBloc>(),
         ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: AppTheme.ligthTheme,
         onGenerateRoute: RoutesGenerator.generateRoutes,
-        // initialRoute: Routes.login,
         home: const Wrapper(),
       ),
     );

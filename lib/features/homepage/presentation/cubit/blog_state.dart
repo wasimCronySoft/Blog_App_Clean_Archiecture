@@ -12,8 +12,8 @@ final class BlogInitial extends BlogState {}
 final class BlogLoading extends BlogState {}
 
 final class BlogSuccess extends BlogState {
-  final Blog blog;
-  const BlogSuccess({required this.blog});
+  final Blog? blog;
+  const BlogSuccess({this.blog});
 }
 
 final class BlogFailure extends BlogState {

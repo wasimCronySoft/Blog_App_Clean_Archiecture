@@ -16,14 +16,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final SignUpInteractor singupInteractor;
   final LoginInteractor loginInteractor;
   final UserInteractor userInteractor;
-  final AppUserCubit appUserCubit;
+  final AppUserCubit _appUserCubit;
 
   AuthBloc({
     required this.singupInteractor,
     required this.loginInteractor,
     required this.userInteractor,
-    required this.appUserCubit,
-  }) : super(AuthInitial()) {
+    required AppUserCubit appUserCubit,
+  })  : _appUserCubit = appUserCubit,
+        super(AuthInitial()) {
     //Signup
 
     on<AuthSignUp>((event, emit) async {
@@ -59,8 +60,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
   }
   //Appuser Cubit
-  appUserSuccess(Emitter emit, User user) {
-    appUserCubit.appUser(user);
+  appUserSuccess(Emitter<AuthState> emit, User user) {
+    _appUserCubit.appUser(user);
     emit(AuthSuccess(user: user));
   }
 }

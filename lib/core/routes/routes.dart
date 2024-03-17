@@ -1,6 +1,7 @@
 import 'package:clean_arch_application/core/routes/routes_constants.dart';
 import 'package:clean_arch_application/features/auth/presentation/pages/login_view.dart';
 import 'package:clean_arch_application/features/auth/presentation/pages/sign_up_view.dart';
+import 'package:clean_arch_application/features/homepage/presentation/pages/add_new_blog_view.dart';
 import 'package:clean_arch_application/features/homepage/presentation/pages/hompage_view.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +19,10 @@ class RoutesGenerator {
       case Routes.singup:
         return MaterialPageRoute(
           builder: (context) => const SignupView(),
+        );
+      case Routes.addBlog:
+        return MaterialPageRoute(
+          builder: (context) => const AddNewBlogView(),
         );
 
       default:

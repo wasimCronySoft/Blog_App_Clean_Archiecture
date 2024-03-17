@@ -26,7 +26,11 @@ class AuthRepositoryImpl implements AuthRepository {
 
   @override
   Future<User?> getCurrentUserData() async {
-    final res = await dataSource.getCurrentUserData();
-    return res;
+    final session = dataSource.currentUserSession;
+    if (session != null) {
+      final res = await dataSource.getCurrentUserData();
+      return res;
+    }
+    return null;
   }
 }

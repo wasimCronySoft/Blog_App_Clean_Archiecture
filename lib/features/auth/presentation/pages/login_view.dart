@@ -11,18 +11,6 @@ class LoginView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) => AuthBloc(
-            singupInteractor: DI.instance<SignUpInteractor>(),
-            loginInteractor: DI.instance<LoginInteractor>(),
-            userInteractor: DI.instance(),
-            appUserCubit: DI.instance(),
-          ),
-        )
-      ],
-      child: const LoginBody(),
-    );
+    return const LoginBody();
   }
 }

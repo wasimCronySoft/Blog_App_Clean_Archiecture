@@ -16,6 +16,10 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
   AuthRemoteDataSourceImp({
     required this.client,
   });
+
+  @override
+  Session? get currentUserSession => client.auth.currentSession;
+
   @override
   Future<UserModel> loginWithEmail(LoginParam param) async {
     try {
@@ -23,6 +27,7 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
           .signInWithPassword(email: param.email, password: param.password);
       return UserModel.fromJson(res.user!.toJson()).copyWith(
         email: currentUserSession?.user.email ?? "",
+        uid: currentUserSession?.user.id ?? "",
       );
     } catch (e) {
       throw CustomException(message: e.toString());
@@ -42,14 +47,12 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
       if (res.user == null) throw CustomException(message: "User is null");
       return UserModel.fromJson(res.user!.toJson()).copyWith(
         email: currentUserSession?.user.email ?? "",
+        uid: currentUserSession?.user.id ?? "",
       );
     } catch (e) {
       throw CustomException(message: e.toString());
     }
   }
-
-  @override
-  Session? get currentUserSession => client.auth.currentSession;
 
   @override
   Future<UserModel?> getCurrentUserData() async {
@@ -60,6 +63,7 @@ class AuthRemoteDataSourceImp implements AuthRemoteDataSource {
           );
       return UserModel.fromJson(res.first).copyWith(
         email: currentUserSession?.user.email ?? "",
+        uid: currentUserSession?.user.id ?? "",
       );
     } else {
       return null;
