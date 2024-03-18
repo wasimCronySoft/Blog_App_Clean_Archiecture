@@ -45,12 +45,16 @@ class BlogCard extends StatelessWidget {
                   children: [
                     SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      child: Row(
+                      child: Wrap(
                         children: blog.topics
                             .map(
                               (e) => Padding(
                                 padding: const EdgeInsets.all(5.0),
-                                child: Chip(label: Text(e)),
+                                child: Chip(
+                                    label: Text(
+                                  e,
+                                  style: const TextStyle(fontSize: 12),
+                                )),
                               ),
                             )
                             .toList(),
