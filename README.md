@@ -2,11 +2,11 @@
 
 ## Blog App
 
-#### This app is created using Flutter to demonstration the clean architecutre .
+#### This app is created using Flutter and Supabase to demonstration the clean architecutre .
 
 ## Features:
 * user can login and signup,
-* user can upload and fetch the blogs
+* user can upload and fetch the blogs form supbase Postgres database
 * share the blogs to others
 * Blogs are saved offline, so they can be viewed without the internet
 
